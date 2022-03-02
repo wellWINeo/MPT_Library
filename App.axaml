@@ -1,0 +1,28 @@
+<Application xmlns="https://github.com/avaloniaui" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:local="using:Library" x:Class="Library.App">
+    <Application.DataTemplates>
+        <local:ViewLocator />
+    </Application.DataTemplates>
+
+    <Application.Resources>
+
+        <!-- fonts -->
+        <FontFamily x:Key="headerFont">Open Sans Semibold</FontFamily>
+        <FontFamily x:Key="mainFont">Open Sans Light</FontFamily>
+
+        <!-- main colors -->
+        <SolidColorBrush Color="#00903e" x:Key="b_green" />
+        <SolidColorBrush Color="#fdc100" x:Key="b_yellow" />
+        <SolidColorBrush Color="#241d70" x:Key="b_blue" />
+
+        <!-- secondary colors -->
+        <SolidColorBrush Color="#ebebeb" x:Key="sc_white" />
+        <SolidColorBrush Color="#b4b4b4" x:Key="sc_lightGrey" />
+        <SolidColorBrush Color="#505050" x:Key="sc_grey" />
+        <SolidColorBrush Color="#000000" x:Key="sc_black" />
+    </Application.Resources>
+
+    <Application.Styles>
+        <FluentTheme Mode="Light" />
+        <StyleInclude Source="avares://Avalonia.Controls.DataGrid/Themes/Fluent.xaml"/>
+    </Application.Styles>
+</Application>

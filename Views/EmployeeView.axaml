@@ -1,0 +1,75 @@
+<UserControl xmlns="https://github.com/avaloniaui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             mc:Ignorable="d" d:DesignWidth="800" d:DesignHeight="450"
+             x:Class="Library.Views.EmployeeView">
+    <StackPanel>
+        <TextBlock HorizontalAlignment="Center">Сотрудники</TextBlock>
+        
+        <Grid RowDefinitions="Auto, Auto, Auto, Auto, Auto, Auto, Auto"
+              ColumnDefinitions="Auto, Auto, Auto">
+            
+            <!-- column 0 -->
+            <StackPanel Grid.Row="0" Grid.Column="0">
+                <Label>Фамилия</Label>
+                <TextBox x:Name="Surname"></TextBox>
+            </StackPanel>
+            
+            <StackPanel Grid.Row="1" Grid.Column="0">
+                <Label>Имя</Label>
+                <TextBox x:Name="Name"></TextBox>
+            </StackPanel>
+            
+            <StackPanel Grid.Row="2" Grid.Column="0">
+                <Label>Отчество</Label>
+                <TextBox x:Name="Patronymic"></TextBox>
+            </StackPanel>
+            
+            <StackPanel Grid.Row="3" Grid.Column="0">
+                <Label>Серия паспорта</Label>
+                <TextBox x:Name="PassportSeries"></TextBox>
+            </StackPanel>
+            
+            <StackPanel Grid.Row="4" Grid.Column="0">
+                <Label>Номер паспорта</Label>
+                <TextBox x:Name="PassportNumber"></TextBox>
+            </StackPanel>
+            
+            <StackPanel Grid.Row="5" Grid.Column="0">
+                <Label>Дата приема на работу</Label>
+                <DatePicker x:Name="EmployeeDate"></DatePicker>
+            </StackPanel>
+            
+            <StackPanel Grid.Row="6" Grid.Column="0">
+                <Button x:Name="AddButton">Добавить</Button>
+                <Button x:Name="UpdateButton">Изменить</Button>
+                <Button x:Name="DeleteButton">Удалить</Button>
+            </StackPanel>
+            
+            <StackPanel Grid.Row="0" Grid.Column="1">
+                <Label>Номер телефона</Label>
+                <TextBox x:Name="Phone"></TextBox>
+            </StackPanel>
+            
+            <StackPanel Grid.Row="1" Grid.Column="1">
+                <Label>Филиал</Label>
+                <ComboBox x:Name="Branch"></ComboBox>
+            </StackPanel>
+            
+            <StackPanel Grid.Row="0" Grid.Column="2">
+                <Label>Почтовый ящик</Label>
+                <TextBox x:Name="Email"></TextBox>
+            </StackPanel>
+            
+            <StackPanel Grid.Row="1" Grid.Column="2">
+                <Label>Пароль</Label>
+                <ComboBox x:Name="Password"></ComboBox>
+            </StackPanel>
+            
+            <DataGrid Grid.Row="1" Grid.Column="1" Grid.ColumnSpan="2" Grid.RowSpan="5"></DataGrid>
+            
+            
+        </Grid>
+    </StackPanel>
+</UserControl>

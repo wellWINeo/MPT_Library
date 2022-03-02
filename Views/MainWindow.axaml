@@ -1,0 +1,16 @@
+<Window xmlns="https://github.com/avaloniaui" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:vm="using:Library.ViewModels" xmlns:d="http://schemas.microsoft.com/expression/blend/2008" xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" xmlns:rxui="clr-namespace:Avalonia.ReactiveUI;assembly=Avalonia.ReactiveUI" xmlns:local="clr-namespace:Library.Views" mc:Ignorable="d" d:DesignWidth="800" d:DesignHeight="450" x:Class="Library.Views.MainWindow" Icon="/Assets/avalonia-logo.ico" Title="Library">
+
+    <Design.DataContext>
+        <vm:MainWindowViewModel />
+    </Design.DataContext>
+    
+    <!-- <StackPanel> -->
+        <!-- <local:AuthView IsVisible="True" DataContext="{Binding authViewModel}"></local:AuthView> -->
+    
+        <rxui:RoutedViewHost x:Name="ViewHost" IsVisible="False">
+            <rxui:RoutedViewHost.DefaultContent>
+                Default content
+            </rxui:RoutedViewHost.DefaultContent>
+        </rxui:RoutedViewHost>
+    <!-- </StackPanel> -->
+</Window>

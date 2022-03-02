@@ -1,0 +1,33 @@
+<UserControl xmlns="https://github.com/avaloniaui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             mc:Ignorable="d" d:DesignWidth="800" d:DesignHeight="450"
+             x:Class="Library.Views.ReadRoomView">
+    <StackPanel>
+        <TextBlock HorizontalAlignment="Center">Читатльские залы</TextBlock>
+        
+        <Grid ColumnDefinitions="*, 2*" RowDefinitions="*,2*" Margin="20">
+            <StackPanel Grid.Row="0" Grid.Column="0">
+                <Label Margin="0,10,0,0">Номер</Label>
+                <NumericUpDown Minimum="0" x:Name="Number"></NumericUpDown>
+                
+                <Label Margin="0,10,0,0">Кол-во сидений</Label>
+                <NumericUpDown Minimum="0" x:Name="SeatsCount"></NumericUpDown>
+            </StackPanel>
+        
+            <Button Grid.Row="0" Grid.Column="1"
+                    HorizontalAlignment="Right"
+                    x:Name="GoBack"
+                    Content="Назад"/>
+        
+            <StackPanel Grid.Row="1" Grid.Column="0">
+                <Button x:Name="AddButton" Content="Добавить"/>
+                <Button x:Name="ChangeButton" Content="Изменить"/>
+                <Button x:Name="RemoveButton" Content="Удалить"/>
+            </StackPanel>
+        
+            <DataGrid Grid.Row="1" Grid.Column="1" x:Name="Grid"></DataGrid>
+        </Grid>
+    </StackPanel>
+</UserControl>

@@ -1,0 +1,23 @@
+<UserControl xmlns="https://github.com/avaloniaui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             mc:Ignorable="d" d:DesignWidth="800" d:DesignHeight="450"
+             x:Class="Library.Views.AuthView">
+    <Grid VerticalAlignment="Center">
+        <StackPanel Orientation="Vertical" HorizontalAlignment="Center">
+            <TextBlock Margin="0,0,0,30">Авторизация</TextBlock>
+            
+            <TextBlock>Электронный почтовый ящик</TextBlock>
+            <TextBox x:Name="EmailBox"></TextBox>
+            
+            <TextBlock>Пароль</TextBlock>
+            <TextBox x:Name="PasswordBox"></TextBox>
+            
+            <StackPanel Orientation="Horizontal">
+                <Button x:Name="LoginButton" IsEnabled="True" Content="Войти" />
+                <Button x:Name="ForgotButton">Забыл пароль</Button>
+            </StackPanel>
+        </StackPanel>
+    </Grid>
+</UserControl>

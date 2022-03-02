@@ -1,0 +1,42 @@
+<UserControl xmlns="https://github.com/avaloniaui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             mc:Ignorable="d" d:DesignWidth="800" d:DesignHeight="450"
+             x:Class="Library.Views.LibraryView">
+    <StackPanel>
+        <TextBlock HorizontalAlignment="Center">Библиотеки</TextBlock>
+        
+        <Grid ColumnDefinitions="*, 2*" RowDefinitions="*,2*" Margin="20">
+            <StackPanel Grid.Row="0" Grid.Column="0">
+                <Label Margin="0,10,0,0">Адрес</Label>
+                <TextBox x:Name="AddressBox"></TextBox>
+                
+                <Label Margin="0,10,0,0">Время открытия</Label>
+                <TimePicker x:Name="OpenTimePicker"></TimePicker>
+                
+                <Label Margin="0,10,0,0">Время закрытия</Label>
+                <TimePicker x:Name="CloseTimePicker"></TimePicker>
+                
+                <Label Margin="0,10,0,0">Номер телефона</Label>
+                <TextBox x:Name="PhoneBox"></TextBox>
+                
+                <Label Margin="0,10,0,0">Читательский зал</Label>
+                <ComboBox x:Name="ReadRoomBox"></ComboBox>
+            </StackPanel>
+        
+            <Button Grid.Row="0" Grid.Column="1"
+                    HorizontalAlignment="Right"
+                    x:Name="GoToReadRooms"
+                    Content="Читательские залы"/>
+        
+            <StackPanel Grid.Row="1" Grid.Column="0">
+                <Button x:Name="AddButton" Content="Добавить"/>
+                <Button x:Name="ChangeButton" Content="Изменить"/>
+                <Button x:Name="RemoveButton" Content="Удалить"/>
+            </StackPanel>
+        
+            <DataGrid Grid.Row="1" Grid.Column="1" x:Name="Grid"></DataGrid>
+        </Grid>
+    </StackPanel>
+</UserControl>

@@ -1,0 +1,38 @@
+<UserControl xmlns="https://github.com/avaloniaui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             mc:Ignorable="d" d:DesignWidth="800" d:DesignHeight="450"
+             x:Class="Library.Views.IssueCertificateView">
+    <StackPanel>
+        <TextBlock HorizontalAlignment="Center">Акты выдачи</TextBlock>
+        
+        <Grid ColumnDefinitions="*, 2*" RowDefinitions="*,2*" Margin="20">
+            <StackPanel Grid.Row="0" Grid.Column="0">
+                <Label>Дата выдачи</Label>
+                <DatePicker x:Name="IssueDate"></DatePicker>
+                
+                <Label>Дата сдачи</Label>
+                <DatePicker x:Name="ReturnDate"></DatePicker>
+                
+                <Label>Жанры и авторы</Label>
+                <ComboBox x:Name="Genre"></ComboBox>
+                
+                <Label>Лицо</Label>
+                <ComboBox x:Name="Person"></ComboBox>
+                
+                <Label>Автор</Label>
+                <ComboBox x:Name="Author"></ComboBox>
+            </StackPanel>
+        
+            <StackPanel Grid.Row="1" Grid.Column="0">
+                <Button x:Name="AddButton" Content="Добавить"/>
+                <Button x:Name="ChangeButton" Content="Изменить"/>
+                <Button x:Name="RemoveButton" Content="Удалить"/>
+            </StackPanel>
+        
+            <DataGrid Grid.Row="0" Grid.Column="1"
+                      Grid.RowSpan="2"></DataGrid>
+        </Grid>
+    </StackPanel>
+</UserControl>
