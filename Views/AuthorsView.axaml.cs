@@ -7,10 +7,12 @@ using Avalonia.Markup.Xaml;
 using Avalonia.ReactiveUI;
 using Library.Models;
 using Library.ViewModels;
+using PropertyChanged;
 using ReactiveUI;
 
 namespace Library.Views;
 
+[DoNotNotify]
 public partial class AuthorsView : ReactiveUserControl<AuthorsViewModel>
 {
     public AuthorsView()

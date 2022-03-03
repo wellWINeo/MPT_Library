@@ -4,10 +4,12 @@ using Avalonia.Controls.Mixins;
 using Avalonia.Markup.Xaml;
 using Avalonia.ReactiveUI;
 using Library.ViewModels;
+using PropertyChanged;
 using ReactiveUI;
 
 namespace Library.Views;
 
+[DoNotNotify]
 public partial class RecoverView : ReactiveUserControl<RecoverViewModel>
 {
     public RecoverView()

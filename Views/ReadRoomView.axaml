@@ -27,7 +27,12 @@
                 <Button x:Name="RemoveButton" Content="Удалить"/>
             </StackPanel>
         
-            <DataGrid Grid.Row="1" Grid.Column="1" x:Name="Grid"></DataGrid>
+            <DataGrid x:Name="Grid"
+                      Grid.Row="1" 
+                      Grid.Column="1"
+                      AutoGenerateColumns="True"
+                      IsReadOnly="True"
+                      SelectionChanged="Grid_OnSelectionChanged"></DataGrid>
         </Grid>
     </StackPanel>
 </UserControl>

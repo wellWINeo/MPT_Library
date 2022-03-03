@@ -1,6 +1,8 @@
+using System.ComponentModel;
+
 namespace Library.Models;
 
-public class Book
+public class Book : INotifyPropertyChanged
 {
     public int BookId { get; set; }
     public string Title { get; set; }
@@ -9,4 +11,6 @@ public class Book
     public virtual Branch Branch { get; set; }
     public virtual Genre Genre { get; set; }
     public virtual Author Author { get; set; }
+    
+    public event PropertyChangedEventHandler? PropertyChanged;
 }

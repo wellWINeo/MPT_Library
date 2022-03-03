@@ -5,11 +5,13 @@ using Avalonia.Markup.Xaml;
 using Avalonia.ReactiveUI;
 using Library.Services;
 using Library.ViewModels;
+using PropertyChanged;
 using ReactiveUI;
 using Splat;
 
 namespace Library.Views;
 
+[DoNotNotify]
 public partial class AuthView : ReactiveUserControl<AuthViewModel>
 {
     public AuthView()

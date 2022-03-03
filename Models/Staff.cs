@@ -1,9 +1,12 @@
 using System;
+using System.ComponentModel;
 using System.ComponentModel.DataAnnotations.Schema;
+using System.Runtime.CompilerServices;
+using JetBrains.Annotations;
 
 namespace Library.Models;
 
-public class Staff
+public class Staff : INotifyPropertyChanged
 {
     public int StaffId { get; set; }
     public string Surname { get; set; }
@@ -16,4 +19,6 @@ public class Staff
     public string Email { get; set; }
     public string Password { get; set; }
     public virtual Branch? Branch { get; set; }
+    
+    public event PropertyChangedEventHandler? PropertyChanged;
 }
