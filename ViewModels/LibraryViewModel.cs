@@ -3,6 +3,7 @@ using System.Collections.ObjectModel;
 using System.Reactive;
 using System.Threading.Tasks;
 using Library.Models;
+using Microsoft.EntityFrameworkCore;
 using ReactiveUI;
 using ReactiveUI.Fody.Helpers;
 
@@ -29,7 +30,7 @@ public class LibraryViewModel : ViewModelBase
 
     public LibraryViewModel()
     {
-        Libraries = new(db.Libraries);
+        Libraries = new(db.Libraries.Include(e => e.ReadingRoom));
         ReadingRooms = new(db.ReadingRooms);
         
         GoToReadRooms = _naviToVM(new ReadRoomViewModel());
@@ -49,7 +50,8 @@ public class LibraryViewModel : ViewModelBase
             PhoneNumber = PhoneNumber,
             ReadingRoom = ReadingRoom
         };
-
+        
+        Libraries.Add(library);
         await db.Libraries.AddAsync(library);
         await db.SaveChangesAsync();
     }
