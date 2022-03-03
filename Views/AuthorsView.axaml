@@ -10,7 +10,7 @@
         <Grid ColumnDefinitions="*, 2*" RowDefinitions="*,2*" Margin="20">
             <StackPanel Grid.Row="0" Grid.Column="0">
                 <Label>Фамилия и инициалы</Label>
-                <TextBox x:Name="FullNameBox"></TextBox>
+                <TextBox x:Name="Name"></TextBox>
             </StackPanel>
         
             <Button Grid.Row="0" Grid.Column="1"
@@ -24,7 +24,10 @@
                 <Button x:Name="RemoveButton" Content="Удалить"/>
             </StackPanel>
         
-            <DataGrid Grid.Row="1" Grid.Column="1"></DataGrid>
+            <DataGrid Grid.Row="1" Grid.Column="1" 
+                      x:Name="Grid" AutoGenerateColumns="True"
+                      IsReadOnly="True"
+                      SelectionChanged="Grid_OnSelectionChanged"></DataGrid>
         </Grid>
     </StackPanel>
 </UserControl>
