@@ -1,43 +1,19 @@
-﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel.DataAnnotations;
+using System;
 using System.ComponentModel.DataAnnotations.Schema;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
-namespace Library.Models
+namespace Library.Models;
+
+public class Staff
 {
-    [Table("staff")]
-    public class Staff
-    {
-        [Key]
-        [Required]
-        public int IDStaff { get; set; }
-
-        [StringLength(80)]
-        [Required]
-        public string FirstName { get; set; }
-
-        [StringLength(80)]
-        [Required]
-        public string LastName { get; set; }
-
-        [Required]
-        public DateOnly DateOfBirth { get; set; }
-
-        [Required]
-        Gender Gender { get; set; }
-
-        [Required]
-        Position Position { get; set; }
-
-        [StringLength(100)]
-        [Required]
-        public string Email { get; set; }
-
-        [StringLength(200)]
-        [Required]
-        public string Comments { get; set; }
-    }
+    public int StaffId { get; set; }
+    public string Surname { get; set; }
+    public string Name { get; set; }
+    public string Patronymic { get; set; }
+    public string PassportSeries { get; set; }
+    public string PassportNumber { get; set; }
+    public DateOnly DateOfEmployment { get; set; }
+    public string PhoneNumber { get; set; }
+    public string Email { get; set; }
+    public string Password { get; set; }
+    public virtual Branch? Branch { get; set; }
 }

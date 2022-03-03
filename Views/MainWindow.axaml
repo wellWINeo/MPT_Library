@@ -4,13 +4,30 @@
         <vm:MainWindowViewModel />
     </Design.DataContext>
     
-    <!-- <StackPanel> -->
-        <!-- <local:AuthView IsVisible="True" DataContext="{Binding authViewModel}"></local:AuthView> -->
-    
-        <rxui:RoutedViewHost x:Name="ViewHost" IsVisible="False">
-            <rxui:RoutedViewHost.DefaultContent>
-                Default content
-            </rxui:RoutedViewHost.DefaultContent>
-        </rxui:RoutedViewHost>
-    <!-- </StackPanel> -->
+    <StackPanel>
+        <local:AuthView x:Name="AuthView" 
+                        IsVisible="True"
+                        DataContext="{Binding authViewModel}">
+        </local:AuthView>
+        
+        <local:RecoverView x:Name="RecoverView"
+                           IsVisible="False"
+                           DataContext="{Binding recoverViewModel}">
+        </local:RecoverView>
+        
+        <StackPanel x:Name="Menu" IsVisible="False">
+            <StackPanel Orientation="Horizontal">
+                <Button x:Name="GoToBooks">Книги</Button>
+                <Button x:Name="GoToIssueCertificates">Акты выдачи</Button>
+                <Button x:Name="GoToLibraries">Библиотеки</Button>
+                <Button x:Name="GoToBranches">Филиалы</Button>
+                <Button x:Name="GoToEmployees">Сотрудники</Button>
+            </StackPanel>
+            <rxui:RoutedViewHost x:Name="ViewHost">
+                <rxui:RoutedViewHost.DefaultContent>
+                    Меню
+                </rxui:RoutedViewHost.DefaultContent>
+            </rxui:RoutedViewHost>
+        </StackPanel>
+    </StackPanel>
 </Window>

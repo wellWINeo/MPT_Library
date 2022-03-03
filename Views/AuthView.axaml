@@ -8,6 +8,9 @@
         <StackPanel Orientation="Vertical" HorizontalAlignment="Center">
             <TextBlock Margin="0,0,0,30">Авторизация</TextBlock>
             
+            <TextBlock x:Name="FailMessage" Background="#ff0000" Foreground="#fff" IsVisible="False">
+                Некорректный логин или пароль
+            </TextBlock>
             <TextBlock>Электронный почтовый ящик</TextBlock>
             <TextBox x:Name="EmailBox"></TextBox>
             

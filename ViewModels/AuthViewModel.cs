@@ -1,5 +1,10 @@
+using System.Linq;
 using System.Reactive;
 using System.Reactive.Linq;
+using System.Threading.Tasks;
+using Avalonia.Controls;
+using Library.Services;
+using Microsoft.EntityFrameworkCore;
 using ReactiveUI;
 using ReactiveUI.Fody.Helpers;
 
@@ -9,23 +14,34 @@ public class AuthViewModel : ViewModelBase
 {
     [Reactive] public string Email { get; set; }
     [Reactive] public string Password { get; set; }
-    [Reactive] public bool IsNotAuthed { get; set; } = true;
+    [Reactive] public MenuState State { get; private set; }
+    [Reactive] public RoleState RoleState { get; private set; }
     
     public ReactiveCommand<Unit, Unit> LoginCommnad { get; }
-    public ReactiveCommand<Unit, Unit> GoToRecovery { get; }
+    public ReactiveCommand<Unit, MenuState> GoToRecovery { get; }
 
     public AuthViewModel()
     {
-        GoToRecovery = ReactiveCommand.CreateFromTask(async ()
-                => await HostScreen.Router.Navigate.Execute(new RecoverViewModel())
-                    .Select(_ => Unit.Default)
-        );
-        
-        LoginCommnad = ReactiveCommand.CreateFromTask(async ()
-            => await HostScreen.Router.Navigate.Execute(new IssueCertificateViewModel())
-                .Select(_ => Unit.Default),
+        GoToRecovery = ReactiveCommand.Create(() => State = MenuState.Recover);
+        LoginCommnad = ReactiveCommand.CreateFromTask(login,
             this.WhenAnyValue(x => x.Email, y => y.Password,
-                (x, y) => !string.IsNullOrWhiteSpace(x) && !string.IsNullOrWhiteSpace(y))
-        );
+                (x, y) => !string.IsNullOrWhiteSpace(x) && !string.IsNullOrWhiteSpace(y)));
+    }
+
+    private async Task login()
+    {
+        if (await db.Staves.FirstOrDefaultAsync(x
+                => x.Email == Email && x.Password == Password)
+            != null)
+            RoleState = RoleState.Staff;
+        else if (await db.Clients.FirstOrDefaultAsync(x
+                     => x.Email == Email && x.Password == Password)
+                 != null)
+            RoleState = RoleState.Client;
+        else
+            RoleState = RoleState.NotAuth;
+
+        if (RoleState != RoleState.NotAuth)
+            State = MenuState.Menu;
     }
 }

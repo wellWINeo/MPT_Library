@@ -448,3 +448,6 @@ $RECYCLE.BIN/
 ## Visual Studio Code
 ##
 .vscode/*
+
+# Config file exclude
+appsettings.json
