@@ -16,6 +16,10 @@ namespace Library.Views;
 [DoNotNotify]
 public partial class LibraryView : ReactiveUserControl<LibraryViewModel>
 {
+    
+    /// <summary>
+    /// ctor
+    /// </summary>
     public LibraryView()
     {
         InitializeComponent();
@@ -58,5 +62,20 @@ public partial class LibraryView : ReactiveUserControl<LibraryViewModel>
                     value => value as ObservableCollection<ReadingRoom>)
                 .DisposeWith(d);
         });
+    }
+
+    /// <summary>
+    /// изменение значений при выборе записи в таблице
+    /// </summary>
+    /// <param name="sender">Event raiser</param>
+    /// <param name="e">Arguments</param>
+    private void Grid_OnSelectionChanged(object? sender, SelectionChangedEventArgs e)
+    {
+        if (Grid.SelectedItem == null) return;
+        var library = Grid.SelectedItem as Models.Library;
+        Address.Text = library.Address;
+        OpenTime.SelectedTime = library.OpenTime.ToTimeSpan();
+        CloseTime.SelectedTime = library.CloseTime.ToTimeSpan();
+        PhoneNumber.Text = library.PhoneNumber;
     }
 }

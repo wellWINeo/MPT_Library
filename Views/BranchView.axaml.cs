@@ -1,5 +1,6 @@
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
+using System.Globalization;
 using Avalonia;
 using Avalonia.Controls;
 using Avalonia.Controls.Mixins;
@@ -10,12 +11,17 @@ using Library.Models;
 using Library.ViewModels;
 using PropertyChanged;
 using ReactiveUI;
+using Tmds.DBus;
 
 namespace Library.Views;
 
 [DoNotNotify]
 public partial class BranchView : ReactiveUserControl<BranchViewModel>
 {
+    
+    /// <summary>
+    /// ctor
+    /// </summary>
     public BranchView()
     {
         InitializeComponent();
@@ -58,5 +64,18 @@ public partial class BranchView : ReactiveUserControl<BranchViewModel>
                     value => value as ObservableCollection<Branch>)
                 .DisposeWith(d);
         });
+    }
+
+    /// <summary>
+    /// изменение значений при выборе записи в таблице
+    /// </summary>
+    /// <param name="sender">Event raiser</param>
+    /// <param name="e">Arguments</param>
+    private void Grid_OnSelectionChanged(object? sender, SelectionChangedEventArgs e)
+    {
+        if (Grid.SelectedItem == null) return;
+        var branch = Grid.SelectedItem as Branch;
+        Address.Text = branch.Address;
+        Number.Value = branch.Number;
     }
 }

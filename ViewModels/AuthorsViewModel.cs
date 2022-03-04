@@ -31,7 +31,10 @@ public class AuthorsViewModel : ViewModelBase
         UpdateCommand = ReactiveCommand.CreateFromTask(update);
         DeleteCommand = ReactiveCommand.CreateFromTask(delete);
     }
-
+    
+    /// <summary>
+    /// добавление
+    /// </summary>
     private async Task add()
     {
         var author = new Author { Name = Name };
@@ -40,14 +43,20 @@ public class AuthorsViewModel : ViewModelBase
         await db.Authors.AddAsync(author);
         await db.SaveChangesAsync();
     }
-
+    
+    /// <summary>
+    /// обновление
+    /// </summary>
     private async Task update()
     {
         Authors[SelectedIdx].Name = Name;
         db.Authors.Update(Authors[SelectedIdx]);
         await db.SaveChangesAsync();
     }
-
+    
+    /// <summary>
+    /// удаление
+    /// </summary>
     private async Task delete()
     {
         db.Authors.Remove(Authors[SelectedIdx]);

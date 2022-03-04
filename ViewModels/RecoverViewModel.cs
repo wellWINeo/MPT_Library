@@ -11,7 +11,10 @@ public class RecoverViewModel : ViewModelBase
     
     public ReactiveCommand<Unit, Unit> SendPassword { get; }
     public ReactiveCommand<Unit, Unit> Login { get; }
-
+    
+    /// <summary>
+    /// ctor
+    /// </summary>
     public RecoverViewModel()
     {
         Login = ReactiveCommand.CreateFromTask(async () =>

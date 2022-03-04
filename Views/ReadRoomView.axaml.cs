@@ -16,6 +16,10 @@ namespace Library.Views;
 [DoNotNotify]
 public partial class ReadRoomView : ReactiveUserControl<ReadRoomViewModel>
 {
+    
+    /// <summary>
+    /// ctor
+    /// </summary>
     public ReadRoomView()
     {
         InitializeComponent();
@@ -45,6 +49,11 @@ public partial class ReadRoomView : ReactiveUserControl<ReadRoomViewModel>
         });
     }
 
+    /// <summary>
+    /// изменение значений при выборе записи в таблице
+    /// </summary>
+    /// <param name="sender">Event raiser</param>
+    /// <param name="e">Arguments</param>
     private void Grid_OnSelectionChanged(object? sender, SelectionChangedEventArgs e)
     {
         Number.Value = (Grid.SelectedItem as ReadingRoom)?.Number ?? 0;

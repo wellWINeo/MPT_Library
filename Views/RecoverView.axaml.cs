@@ -12,6 +12,9 @@ namespace Library.Views;
 [DoNotNotify]
 public partial class RecoverView : ReactiveUserControl<RecoverViewModel>
 {
+    /// <summary>
+    /// ctor
+    /// </summary>
     public RecoverView()
     {
         InitializeComponent();

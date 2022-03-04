@@ -27,7 +27,10 @@ public class LibraryViewModel : ViewModelBase
     public ReactiveCommand<Unit, Unit> AddCommand { get; }
     public ReactiveCommand<Unit, Unit> UpdateCommand { get; }
     public ReactiveCommand<Unit, Unit> DeleteCommand { get; }
-
+    
+    /// <summary>
+    /// ctor
+    /// </summary>
     public LibraryViewModel()
     {
         Libraries = new(db.Libraries.Include(e => e.ReadingRoom));
@@ -40,6 +43,9 @@ public class LibraryViewModel : ViewModelBase
         DeleteCommand = ReactiveCommand.CreateFromTask(delete);
     }
 
+    /// <summary>
+    /// добавление
+    /// </summary>
     private async Task add()
     {
         var library = new Models.Library
@@ -56,6 +62,9 @@ public class LibraryViewModel : ViewModelBase
         await db.SaveChangesAsync();
     }
     
+    /// <summary>
+    /// обновление
+    /// </summary>
     private async Task update()
     {
         Libraries[SelectedIdx].Address = Address;
@@ -68,6 +77,9 @@ public class LibraryViewModel : ViewModelBase
 
     }
     
+    /// <summary>
+    /// удаление
+    /// </summary>
     private async Task delete()
     {
         db.Libraries.Remove(Libraries[SelectedIdx]);

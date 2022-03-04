@@ -4,6 +4,9 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 namespace Library.Helper;
 
+/// <summary>
+/// Конвертирование между TimeOnly и TimeSpan
+/// </summary>
 public class TimeOnlyConverter : ValueConverter<TimeOnly, TimeSpan>
 {
     public TimeOnlyConverter() : base(
@@ -13,6 +16,9 @@ public class TimeOnlyConverter : ValueConverter<TimeOnly, TimeSpan>
     }
 }
 
+/// <summary>
+/// Сравнение значений
+/// </summary>
 public class TimeOnlyComparer : ValueComparer<TimeOnly>
 {
     public TimeOnlyComparer() : base(

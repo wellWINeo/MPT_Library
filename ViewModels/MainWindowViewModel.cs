@@ -46,7 +46,12 @@ namespace Library.ViewModels
             GoToBranches = navigationToVM(new BranchViewModel());
             GoToEmployees = navigationToVM(new EmployeeViewModel());
         }
-
+        
+        /// <summary>
+        /// Переход к нужной ViewModel'и
+        /// </summary>
+        /// <param name="vm">ViewModel</param>
+        /// <returns>Команда для перехода</returns>
         private ReactiveCommand<Unit, Unit> navigationToVM(IRoutableViewModel vm)
             => ReactiveCommand.CreateFromTask(async () =>
                 await Router.Navigate.Execute(vm).Select(_ => Unit.Default));

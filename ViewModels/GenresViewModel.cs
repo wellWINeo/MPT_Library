@@ -21,6 +21,9 @@ public class GenresViewModel : ViewModelBase
     public ReactiveCommand<Unit, Unit> UpdateCommand { get; }
     public ReactiveCommand<Unit, Unit> DeleteCommand { get; }
 
+    /// <summary>
+    /// ctor
+    /// </summary>
     public GenresViewModel()
     {
         Genres = new(db.Genres);
@@ -31,6 +34,9 @@ public class GenresViewModel : ViewModelBase
         DeleteCommand = ReactiveCommand.CreateFromTask(delete);
     }
 
+    /// <summary>
+    /// добавление
+    /// </summary>
     private async Task add()
     {
         var genre = new Genre { Name = Name };
@@ -40,6 +46,9 @@ public class GenresViewModel : ViewModelBase
         await db.SaveChangesAsync();
     }
 
+    /// <summary>
+    /// обновление
+    /// </summary>
     private async Task update()
     {
         Genres[SelectedIdx].Name = Name;
@@ -47,6 +56,9 @@ public class GenresViewModel : ViewModelBase
         await db.SaveChangesAsync();
     }
 
+    /// <summary>
+    /// удаление
+    /// </summary>
     private async Task delete()
     {
         db.Genres.Remove(Genres[SelectedIdx]);

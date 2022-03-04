@@ -5,6 +5,9 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace Library.Helper;
 
 
+/// <summary>
+/// Конвертер между DateOnly и DateTime
+/// </summary>
 public class DateOnlyConverter : ValueConverter<DateOnly, DateTime>
 {
     public DateOnlyConverter() : base(
@@ -14,6 +17,9 @@ public class DateOnlyConverter : ValueConverter<DateOnly, DateTime>
     }
 }
 
+/// <summary>
+/// Сравнение значений
+/// </summary>
 public class DateOnlyComparer : ValueComparer<DateOnly>
 {
     public DateOnlyComparer() : base(

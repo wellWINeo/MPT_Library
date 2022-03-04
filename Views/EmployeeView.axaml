@@ -18,7 +18,7 @@
             
             <StackPanel Grid.Row="1" Grid.Column="0">
                 <Label>Имя</Label>
-                <TextBox x:Name="Name"></TextBox>
+                <TextBox x:Name="NameBox"></TextBox>
             </StackPanel>
             
             <StackPanel Grid.Row="2" Grid.Column="0">
@@ -43,18 +43,24 @@
             
             <StackPanel Grid.Row="6" Grid.Column="0">
                 <Button x:Name="AddButton">Добавить</Button>
-                <Button x:Name="UpdateButton">Изменить</Button>
-                <Button x:Name="DeleteButton">Удалить</Button>
+                <Button x:Name="ChangeButton">Изменить</Button>
+                <Button x:Name="RemoveButton">Удалить</Button>
             </StackPanel>
             
             <StackPanel Grid.Row="0" Grid.Column="1">
                 <Label>Номер телефона</Label>
-                <TextBox x:Name="Phone"></TextBox>
+                <TextBox x:Name="PhoneNumber"></TextBox>
             </StackPanel>
             
             <StackPanel Grid.Row="1" Grid.Column="1">
                 <Label>Филиал</Label>
-                <ComboBox x:Name="Branch"></ComboBox>
+                <ComboBox x:Name="Branch">
+                    <ComboBox.ItemTemplate>
+                        <DataTemplate>
+                            <TextBlock Text="{Binding Address}"></TextBlock>
+                        </DataTemplate>
+                    </ComboBox.ItemTemplate>
+                </ComboBox>
             </StackPanel>
             
             <StackPanel Grid.Row="0" Grid.Column="2">
@@ -64,11 +70,12 @@
             
             <StackPanel Grid.Row="1" Grid.Column="2">
                 <Label>Пароль</Label>
-                <ComboBox x:Name="Password"></ComboBox>
+                <TextBox x:Name="Password"></TextBox>
             </StackPanel>
             
-            <DataGrid Grid.Row="1" Grid.Column="1" Grid.ColumnSpan="2" Grid.RowSpan="5"></DataGrid>
-            
+            <DataGrid Grid.Row="2" Grid.Column="1" Grid.ColumnSpan="2" Grid.RowSpan="5"
+                      x:Name="Grid" AutoGenerateColumns="True" IsReadOnly="True"
+                      SelectionChanged="Grid_OnSelectionChanged"></DataGrid>
             
         </Grid>
     </StackPanel>

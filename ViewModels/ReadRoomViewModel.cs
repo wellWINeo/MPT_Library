@@ -20,7 +20,10 @@ public class ReadRoomViewModel : ViewModelBase
     public ReactiveCommand<Unit, Unit> AddCommand { get; }
     public ReactiveCommand<Unit, Unit> UpdateCommand { get; }
     public ReactiveCommand<Unit, Unit> DeleteCommand { get; }
-    
+
+    /// <summary>
+    /// ctor
+    /// </summary>
     public ReadRoomViewModel()
     {
         ReadingRooms = new(db.ReadingRooms);
@@ -31,7 +34,9 @@ public class ReadRoomViewModel : ViewModelBase
         DeleteCommand = ReactiveCommand.CreateFromTask(delete);
     }
     
-
+    /// <summary>
+    /// добавление
+    /// </summary>
     private async Task add()
     {
         var readingRoom = new ReadingRoom
@@ -45,6 +50,9 @@ public class ReadRoomViewModel : ViewModelBase
         await db.SaveChangesAsync();
     }
 
+    /// <summary>
+    /// обновление
+    /// </summary>
     private async Task update()
     {
         ReadingRooms[SelectedIdx].Number = Number;
@@ -53,6 +61,9 @@ public class ReadRoomViewModel : ViewModelBase
         await db.SaveChangesAsync();
     }
 
+    /// <summary>
+    /// удаление
+    /// </summary>
     private async Task delete()
     {
         db.ReadingRooms.Remove(ReadingRooms[SelectedIdx]);

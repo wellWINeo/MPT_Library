@@ -15,14 +15,26 @@
                 <Label>Дата сдачи</Label>
                 <DatePicker x:Name="ReturnDate"></DatePicker>
                 
-                <Label>Жанры и авторы</Label>
-                <ComboBox x:Name="Genre"></ComboBox>
-                
+                <Label>Книга</Label>
+                <ComboBox x:Name="Book">
+                    <ComboBox.ItemTemplate>
+                        <DataTemplate>
+                            <StackPanel Orientation="Horizontal">
+                                <TextBlock Text="{Binding Title}"></TextBlock>
+                                <TextBlock Text=", " />
+                                <TextBlock Text="{Binding Author.Name}"></TextBlock>
+                            </StackPanel>
+                        </DataTemplate>
+                    </ComboBox.ItemTemplate>
+                </ComboBox>
                 <Label>Лицо</Label>
-                <ComboBox x:Name="Person"></ComboBox>
-                
-                <Label>Автор</Label>
-                <ComboBox x:Name="Author"></ComboBox>
+                <ComboBox x:Name="Client">
+                    <ComboBox.ItemTemplate>
+                        <DataTemplate>
+                            <TextBlock Text="{Binding Name}"></TextBlock>
+                        </DataTemplate>
+                    </ComboBox.ItemTemplate>
+                </ComboBox>
             </StackPanel>
         
             <StackPanel Grid.Row="1" Grid.Column="0">
@@ -32,7 +44,10 @@
             </StackPanel>
         
             <DataGrid Grid.Row="0" Grid.Column="1"
-                      Grid.RowSpan="2"></DataGrid>
+                      Grid.RowSpan="2"
+                      AutoGenerateColumns="True"
+                      x:Name="Grid"
+                      SelectionChanged="Grid_OnSelectionChanged"></DataGrid>
         </Grid>
     </StackPanel>
 </UserControl>

@@ -48,7 +48,8 @@
             <DataGrid Grid.Row="1" Grid.Column="1" 
                       x:Name="Grid"
                       AutoGenerateColumns="True"
-                      IsReadOnly="True"></DataGrid>
+                      IsReadOnly="True"
+                      SelectionChanged="Grid_OnSelectionChanged"></DataGrid>
         </Grid>
     </StackPanel>
 </UserControl>

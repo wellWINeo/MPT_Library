@@ -3,10 +3,13 @@ using Microsoft.EntityFrameworkCore;
 
 namespace Library.Services;
 
-// хрень ес чесно, лучше использовать IDbContextFactory для абстракции
-// но пофиг
+/// <summary>
+/// хрень ес чесно, лучше использовать IDbContextFactory для абстракции
+/// но пофиг
+/// </summary>
 public interface IApplicationContext
 {
+    // entities
     public DbSet<Author> Authors { get; set; }
     public DbSet<Book> Books { get; set; }
     public DbSet<Branch> Branches { get; set; }

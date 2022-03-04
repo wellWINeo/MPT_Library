@@ -15,6 +15,9 @@ namespace Library.Views;
 [DoNotNotify]
 public partial class GenresView : ReactiveUserControl<GenresViewModel>
 {
+    /// <summary>
+    /// ctor
+    /// </summary>
     public GenresView()
     {
         InitializeComponent();
@@ -42,6 +45,11 @@ public partial class GenresView : ReactiveUserControl<GenresViewModel>
         });
     }
 
+    /// <summary>
+    /// изменение значений при выборе записи в таблице
+    /// </summary>
+    /// <param name="sender">Event raiser</param>
+    /// <param name="e">Arguments</param>
     private void DataGrid_OnSelectionChanged(object? sender, SelectionChangedEventArgs e)
     {
         Name.Text = (Grid.SelectedItem as Genre)?.Name;

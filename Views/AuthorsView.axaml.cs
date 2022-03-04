@@ -15,6 +15,10 @@ namespace Library.Views;
 [DoNotNotify]
 public partial class AuthorsView : ReactiveUserControl<AuthorsViewModel>
 {
+    
+    /// <summary>
+    /// ctor
+    /// </summary>
     public AuthorsView()
     {
         InitializeComponent();
@@ -41,7 +45,12 @@ public partial class AuthorsView : ReactiveUserControl<AuthorsViewModel>
                 .DisposeWith(d);
         });
     }
-
+    
+    /// <summary>
+    /// изменение значений при выборе записи в таблице
+    /// </summary>
+    /// <param name="sender">Event raiser</param>
+    /// <param name="e">Arguments</param>
     private void Grid_OnSelectionChanged(object? sender, SelectionChangedEventArgs e)
     {
         Name.Text = (this.Grid.SelectedItem as Author).Name ?? "";

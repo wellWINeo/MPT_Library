@@ -55,7 +55,10 @@ public class BooksViewModel : ViewModelBase
         UpdateCommand = ReactiveCommand.CreateFromTask(update);
         DeleteCommand = ReactiveCommand.CreateFromTask(delete);
     }
-
+    
+    /// <summary>
+    /// добавление
+    /// </summary>
     private async Task add()
     {
         var book = new Book
@@ -74,6 +77,9 @@ public class BooksViewModel : ViewModelBase
         Books.Add(book);
     }
     
+    /// <summary>
+    /// обновление
+    /// </summary>
     private async Task update()
     {
         Book.Title = Title;
@@ -87,6 +93,9 @@ public class BooksViewModel : ViewModelBase
         await db.SaveChangesAsync();
     }
     
+    /// <summary>
+    /// удаление
+    /// </summary>
     private async Task delete()
     {
         db.Books.Remove(Book);

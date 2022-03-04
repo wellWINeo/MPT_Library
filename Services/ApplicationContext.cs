@@ -19,9 +19,13 @@ public class ApplicationContext : DbContext, IApplicationContext
     public DbSet<Models.Library> Libraries { get; set; }
     public DbSet<ReadingRoom> ReadingRooms { get; set; }
     public DbSet<Staff> Staves { get; set; }
-
+    
+    /// <summary>
+    /// ctor
+    /// </summary>
     public ApplicationContext() => Database.EnsureCreated();
-
+    
+    /// <inheritdoc cref="DbContext.OnConfiguring"/>
     protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
     {
         // get connection string from config via locator
@@ -32,10 +36,12 @@ public class ApplicationContext : DbContext, IApplicationContext
         optionsBuilder.UseSqlServer(connString);
     }
 
+    /// <inheritdoc cref="DbContext.OnModelCreating"/>
     protected override void OnModelCreating(ModelBuilder modelBuilder)
     {
         base.OnModelCreating(modelBuilder);
-
+        
+        // настройка конвертеров
         modelBuilder.Entity<Branch>(builder =>
         {
             builder.Property(x => x.OpenTime)
@@ -63,7 +69,8 @@ public class ApplicationContext : DbContext, IApplicationContext
             builder.Property(x => x.DateOfIssue)
                 .HasConversion<DateOnlyConverter, DateOnlyComparer>();
         });
-
+        
+            // data seeding
         modelBuilder.Entity<Staff>().HasData(
             new Staff()
             {

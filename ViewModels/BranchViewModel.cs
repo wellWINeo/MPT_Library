@@ -26,7 +26,10 @@ public class BranchViewModel : ViewModelBase
     public ReactiveCommand<Unit, Unit> AddCommand { get; }
     public ReactiveCommand<Unit, Unit> UpdateCommand { get; }
     public ReactiveCommand<Unit, Unit> DeleteCommand { get; }
-
+    
+    /// <summary>
+    /// ctor
+    /// </summary>
     public BranchViewModel()
     {
         Branches = new(db.Branches.Include(e => e.Library));
@@ -39,6 +42,9 @@ public class BranchViewModel : ViewModelBase
         DeleteCommand = ReactiveCommand.CreateFromTask(delete);
     }
 
+    /// <summary>
+    /// добавление
+    /// </summary>
     private async Task add()
     {
         var branch = new Branch
@@ -57,6 +63,9 @@ public class BranchViewModel : ViewModelBase
         Branches.Add(branch);
     }
     
+    /// <summary>
+    /// обновление
+    /// </summary>
     private async Task update()
     {
         Branches[SelectedIdx].Address = Address;
@@ -69,6 +78,9 @@ public class BranchViewModel : ViewModelBase
         await db.SaveChangesAsync();
     }
     
+    /// <summary>
+    /// удаление
+    /// </summary>
     private async Task delete()
     {
         db.Branches.Remove(Branches[SelectedIdx]);

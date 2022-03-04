@@ -14,6 +14,10 @@ namespace Library.Views;
 [DoNotNotify]
 public partial class AuthView : ReactiveUserControl<AuthViewModel>
 {
+    
+    /// <summary>
+    /// ctor
+    /// </summary>
     public AuthView()
     {
         InitializeComponent();

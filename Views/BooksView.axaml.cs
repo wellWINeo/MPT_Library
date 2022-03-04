@@ -2,11 +2,13 @@ using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using Avalonia;
 using Avalonia.Controls;
+using Avalonia.Controls.Chrome;
 using Avalonia.Controls.Mixins;
 using Avalonia.Markup.Xaml;
 using Avalonia.ReactiveUI;
 using Library.Models;
 using Library.ViewModels;
+using Microsoft.EntityFrameworkCore.Metadata.Internal;
 using PropertyChanged;
 using ReactiveUI;
 
@@ -15,6 +17,10 @@ namespace Library.Views;
 [DoNotNotify]
 public partial class BooksView : ReactiveUserControl<BooksViewModel>
 {
+    
+    /// <summary>
+    /// ctor
+    /// </summary>
     public BooksView()
     {
         InitializeComponent();
@@ -65,5 +71,19 @@ public partial class BooksView : ReactiveUserControl<BooksViewModel>
                     value => value as ObservableCollection<Book>)
                 .DisposeWith(d);
         });
+    }
+
+    /// <summary>
+    /// изменение значений при выборе записи в таблице
+    /// </summary>
+    /// <param name="sender">Event raiser</param>
+    /// <param name="e">Arguments</param>
+    private void Grid_OnSelectionChanged(object? sender, SelectionChangedEventArgs e)
+    {
+        if (Grid.SelectedItem == null) return;
+        var book = Grid.SelectedItem as Book;
+        Title.Text = book.Title;
+        ReleaseYear.Value = book.YearOfRelease;
+        Quantity.Value = book.Quantity;
     }
 }

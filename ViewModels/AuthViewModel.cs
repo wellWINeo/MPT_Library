@@ -19,7 +19,10 @@ public class AuthViewModel : ViewModelBase
     
     public ReactiveCommand<Unit, Unit> LoginCommnad { get; }
     public ReactiveCommand<Unit, MenuState> GoToRecovery { get; }
-
+    
+    /// <summary>
+    /// ctor
+    /// </summary>
     public AuthViewModel()
     {
         GoToRecovery = ReactiveCommand.Create(() => State = MenuState.Recover);
@@ -27,7 +30,10 @@ public class AuthViewModel : ViewModelBase
             this.WhenAnyValue(x => x.Email, y => y.Password,
                 (x, y) => !string.IsNullOrWhiteSpace(x) && !string.IsNullOrWhiteSpace(y)));
     }
-
+    
+    /// <summary>
+    /// Мето для аутентификации
+    /// </summary>
     private async Task login()
     {
         if (await db.Staves.FirstOrDefaultAsync(x
