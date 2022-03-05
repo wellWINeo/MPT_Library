@@ -2,7 +2,7 @@ using System.ComponentModel;
 
 namespace Library.Models;
 
-public class Client : INotifyPropertyChanged
+public class Client : INotifyPropertyChanged, IUser
 {
     public int ClientId { get; set; }
     public string Surname { get; set; }

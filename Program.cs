@@ -25,12 +25,16 @@ namespace Library
         {
             // find views for viewmodels
             Locator.CurrentMutable.RegisterViewsForViewModels(Assembly.GetCallingAssembly());
-            
+
             // read config file
             var builder = new ConfigurationBuilder()
                 .SetBasePath(Directory.GetCurrentDirectory())
+#if DEBUG
+                .AddJsonFile("appsettings.Development.json");
+#else
                 .AddJsonFile("appsettings.json");
-            
+#endif
+
             // put conf root to locator
             Locator.CurrentMutable.RegisterConstant(builder.Build(),
                 typeof(IConfigurationRoot));
@@ -40,6 +44,10 @@ namespace Library
                 new ApplicationContext(),
                 typeof(ApplicationContext)
             );
+
+            Locator.CurrentMutable.RegisterConstant(new EmailRecoverService(),
+                typeof(IEmailRecoverService));
+
             return AppBuilder.Configure<App>()
                 .UsePlatformDetect()
                 .LogToTrace()

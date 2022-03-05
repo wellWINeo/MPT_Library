@@ -4,15 +4,17 @@
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
              mc:Ignorable="d" d:DesignWidth="800" d:DesignHeight="450"
              x:Class="Library.Views.RecoverView">
-    <StackPanel Orientation="Vertical">
-        <TextBlock>Восстановление доступа</TextBlock>
+    <Grid HorizontalAlignment="Center" VerticalAlignment="Center">
+        <StackPanel>
+            <TextBlock>Восстановление доступа</TextBlock>
 
-        <TextBlock TextAlignment="Left">Электронный почтовый ящик</TextBlock>
-        <TextBox x:Name="EmailBox"></TextBox>
-        <StackPanel Orientation="Horizontal">
-            <Button x:Name="SendPassword">Отправить пароль</Button>
-            <Button x:Name="Login">Войти</Button>
+            <TextBlock TextAlignment="Left">Электронный почтовый ящик</TextBlock>
+            <TextBox x:Name="EmailBox"></TextBox>
+            <StackPanel Orientation="Horizontal">
+                <Button x:Name="SendPassword">Отправить пароль</Button>
+                <Button x:Name="Login">Войти</Button>
+            </StackPanel>
+        
         </StackPanel>
-    
-    </StackPanel>
+    </Grid>
 </UserControl>

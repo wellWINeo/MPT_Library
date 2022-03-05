@@ -451,3 +451,7 @@ $RECYCLE.BIN/
 
 # Config file exclude
 appsettings.json
+appsettings.Development.json
+
+# ignore SQL Script
+script.sql

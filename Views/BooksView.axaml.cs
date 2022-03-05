@@ -17,7 +17,7 @@ namespace Library.Views;
 [DoNotNotify]
 public partial class BooksView : ReactiveUserControl<BooksViewModel>
 {
-    
+
     /// <summary>
     /// ctor
     /// </summary>

@@ -6,7 +6,7 @@ using JetBrains.Annotations;
 
 namespace Library.Models;
 
-public class Staff : INotifyPropertyChanged
+public class Staff : INotifyPropertyChanged, IUser
 {
     public int StaffId { get; set; }
     public string Surname { get; set; }

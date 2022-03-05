@@ -23,15 +23,15 @@ public partial class MainWindow : ReactiveWindow<MainWindowViewModel>
 
             this.Bind(ViewModel, vm => vm.State, view => view.AuthView.IsVisible,
                 state => state == MenuState.Auth, 
-                visible => visible ? MenuState.Auth : MenuState.Menu)
+                visible => ViewModel.State)
                 .DisposeWith(disposables);
             this.Bind(ViewModel, vm => vm.State, view => view.RecoverView.IsVisible,
                 state => state == MenuState.Recover,
-                visible => visible ? MenuState.Recover : MenuState.Auth)
+                visible => ViewModel.State)
                 .DisposeWith(disposables);
             this.Bind(ViewModel, vm => vm.State, view => view.Menu.IsVisible,
                 state => state == MenuState.Menu,
-                visible => visible ? MenuState.Menu : MenuState.Auth)
+                visible => ViewModel.State)
                 .DisposeWith(disposables);
             
             // Lock button by Role

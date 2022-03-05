@@ -1,12 +1,18 @@
 # Library
 
 ## Configuration
-To set up connection string for database (MySQL/MariDB) create 
-`appsettings.json` and enter text below:
+Config stores in `appsettings.json` file, example below:
 ```
 {
   "ConnectionStrings": {
-    "Server": "server=localhost;user=<username>;password=<password>;database=carting;"
+    "Server": "server=localhost;user=<username>;password=<password>;database=library;"
+  },
+  "EmailSettings": {
+    "email": "user@example.com",
+    "name": "Библиотека",
+    "password": "<пароль>",
+    "host": "<address>",
+    "port": <port>
   }
 }
 ```
